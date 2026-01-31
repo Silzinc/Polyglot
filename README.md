@@ -4,6 +4,12 @@ Polyglot is a WIP widget for [Dank Material Shell](https://danklinux.com) that l
 
 ![Polyglot screenshot](./screenshot1.png)
 
+## Usage
+
+Upon installation, the user must enter a DeepL API key in the settings. To generate a key, create a DeepL account and navigate to [https://www.deepl.com/your-account/keys](https://www.deepl.com/your-account/keys).
+
+Then, the widget should just work when added to your Dank bar.
+
 ## Features
 
 - Translate text as you type
