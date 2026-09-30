@@ -269,23 +269,21 @@ for (const lang of Object.entries(acronym2language.targets)) {
   language2acronym.targets[lang[1]] = lang[0];
 }
 
-function translateCommand(text, sourceLang, targetLang, apiKey) {
+function translateCommand(text, sourceLang, targetLang) {
   return [
-    "curl",
-    "-X",
-    "POST",
-    "https://api-free.deepl.com/v2/translate",
-    "--header",
-    `Authorization: DeepL-Auth-Key ${apiKey}`,
-    "--header",
-    "Content-Type: application/json",
-    "--data",
-    JSON.stringify({
-      text: [text],
-      source_lang: sourceLang.startsWith("Auto")
-        ? ""
-        : language2acronym.sources[sourceLang],
-      target_lang: language2acronym.targets[targetLang],
-    }),
+    "sh",
+    "-c",
+    `curl https://api-free.deepl.com/v2/translate \
+  --header "Authorization: DeepL-Auth-Key $DEEPL_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data ${
+      // stringify twice to escape internal quotes and add outer ones
+      JSON.stringify(JSON.stringify({
+        text: [text],
+        source_lang: sourceLang.startsWith("Auto")
+          ? ""
+          : language2acronym.sources[sourceLang],
+        target_lang: language2acronym.targets[targetLang],
+      }))}`,
   ];
 }

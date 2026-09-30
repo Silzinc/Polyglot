@@ -78,12 +78,15 @@ PluginComponent {
           id: translationAPICall
 
           function translate() {
-            translationAPICall.exec(DeeplAPI.translateCommand(
+            const command = DeeplAPI.translateCommand(
               sourceText.text,
               sourceLanguage.currentValue,
-              targetLanguage.currentValue,
-              pluginData.deeplApiKey
-            ));
+              targetLanguage.currentValue
+            );
+            translationAPICall.exec({
+              command,
+              environment: { DEEPL_API_KEY: pluginData.deeplApiKey }
+            });
           }
 
           stdout: StdioCollector {
