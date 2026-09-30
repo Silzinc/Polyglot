@@ -2,7 +2,7 @@
   "id": "polyglot",
   "name": "Polyglot",
   "description": "A WIP translation plugin. Currently supports DeepL's free API.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Silzinc",
   "icon": "translate",
   "type": "widget",
