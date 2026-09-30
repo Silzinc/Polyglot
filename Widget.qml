@@ -108,13 +108,12 @@ PluginComponent {
                 }
               } else if (
                 response.message !== undefined &&
-                response.message.startsWith("Authentication failed, provided API key is invalid.") ||
-                response.message.startsWith("Forbidden")
+                response.message.startsWith("Authentication failed, provided API key is invalid.")
               ) {
-                ToastService.showError("Translation failed", `Invalid DeepL API key '${pluginData.deeplApiKey}'`);
+                ToastService.showError("Translation failed", `Invalid DeepL API key.`);
                 // TODO: check other types of error messages
               } else {
-                ToastService.showError("Translation failed", `Unknown error: '${response}'`);
+                ToastService.showError("Translation failed", `Unknown error: '${JSON.stringify(response)}'`);
               }
             }
           }
